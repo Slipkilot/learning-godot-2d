@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqnxi4asq3uas"]
+[gd_scene load_steps=11 format=3 uid="uid://dqnxi4asq3uas"]
 
 [ext_resource type="PackedScene" uid="uid://byh85yo5bsayw" path="res://scenes/game_object/player/player.tscn" id="1_awmdq"]
 [ext_resource type="PackedScene" uid="uid://b5lqgupd4ceda" path="res://scenes/game_object/game_camera/game_camera.tscn" id="1_itmkl"]
@@ -6,13 +6,18 @@
 [ext_resource type="TileSet" uid="uid://xyk6ub4kkw10" path="res://resources/tileset.tres" id="1_u5ss6"]
 [ext_resource type="PackedScene" uid="uid://brwtytyg106u1" path="res://scenes/manager/enemy_manager.tscn" id="1_x88ww"]
 [ext_resource type="PackedScene" uid="uid://efcs3vyg0jmo" path="res://scenes/manager/arena_time_manager.tscn" id="2_7jp20"]
+[ext_resource type="PackedScene" uid="uid://n2j14v6sjeye" path="res://scenes/ui/experience_bar.tscn" id="2_ainia"]
 [ext_resource type="PackedScene" uid="uid://25dk818f4b3w" path="res://scenes/manager/experience_manager.tscn" id="4_20m5c"]
 [ext_resource type="Script" path="res://scenes/manager/experience_manager.gd" id="5_rdam8"]
+[ext_resource type="PackedScene" uid="uid://bxced3xjtjeva" path="res://scenes/manager/upgrade_manager.tscn" id="7_asi3j"]
 
 [node name="Main" type="Node"]
 
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_ltnkv")]
 arena_time_manager = NodePath("../ArenaTimeManager")
+
+[node name="ExperienceBar" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("2_ainia")]
+experience_manager = NodePath("../ExperienceManager")
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("2_7jp20")]
 
@@ -20,6 +25,9 @@ arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="ExperienceManager" parent="." instance=ExtResource("4_20m5c")]
 script = ExtResource("5_rdam8")
+
+[node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("7_asi3j")]
+experience_manager = NodePath("../ExperienceManager")
 
 [node name="GameCamera" parent="." instance=ExtResource("1_itmkl")]
 
